@@ -1,23 +1,22 @@
-// const fs = require("fs");
-// const path = require("path");
+const fs = require("fs");
+const path = require("path");
 
+function deleteFolder(path) {
 
-// function deleteFolder(path) {
-//     let files = [];
-//     if( fs.existsSync(path) ) {
-//         files = fs.readdirSync(path);
-//         files.forEach((file) => {
-//             let curPath = path + "/" + file;
-//             if ( fs.statSync(curPath).isDirectory() ) {
-//                 deleteFolder(curPath);
-//             } else {
-//                 fs.unlinkSync(curPath);
-//             }
-//         });
-//         fs.rmdirSync(path);
-//     }
-//    }
-//    deleteFolder(path);
+    if( fs.existsSync(path) ) {
+       const files = fs.readdirSync(path);
+        files.forEach((file) => {
+            let curPath = path + "/" + file;
+            if ( fs.statSync(curPath).isDirectory() ) {
+                deleteFolder(curPath);
+            } else {
+                fs.unlinkSync(curPath);
+            }
+        });
+        fs.rmdirSync(path);
+    }
+   }
+   deleteFolder("test");
 
 
    //--------------------------------
@@ -34,17 +33,17 @@ const fs =require("fs");
 //---------------------------------------------
 // this function delete onli file
 
-const fs = require('fs');
-const path = require('path');
+// const fs = require('fs');
+// const path = require('path');
 
-const directory = 'test';
+// const directory = 'test';
 
-fs.readdir(directory, (err, files) => {
-  if (err) throw err;
+// fs.readdir(directory, (err, files) => {
+//   if (err) throw err;
 
-  for (const file of files) {
-    fs.unlink(path.join(directory, file), err => {
-      if (err) throw err;
-    });
-  }
-}); 
+//   for (const file of files) {
+//     fs.unlink(path.join(directory, file), err => {
+//       if (err) throw err;
+//     });
+//   }
+// }); 

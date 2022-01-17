@@ -1,7 +1,7 @@
 const fs = require("fs");
 
 console.log( "File system directory " );
-fs.readdir( "fileSystem", (err, files) => {
+fs.readdir( "lesson1", (err, files) => {
    if (err) {
       return console.error(err);
    }
